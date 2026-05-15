@@ -35,7 +35,7 @@ class Program
                 var prompt = prompts.GetRandomPrompt();
                 Console.WriteLine($"Prompt: {prompt}");
                 Console.Write("Your response: ");
-                var response = Console.ReadLine();
+                var response = Console.ReadLine() ?? string.Empty;
                 var date = DateTime.Now.ToShortDateString();
                 journal.AddEntry(new Entry(date, prompt, response));
             }

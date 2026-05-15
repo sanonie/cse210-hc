@@ -14,6 +14,12 @@ public class Journal
     public void Display()
     {
         Console.WriteLine("--- Journal Entries ---");
+        if (_entries.Count == 0)
+        {
+            Console.WriteLine("No journal entries yet.");
+            return;
+        }
+
         foreach (var e in _entries)
         {
             Console.WriteLine(e.ToString());
@@ -39,7 +45,7 @@ public class Journal
         var lines = File.ReadAllLines(filename);
         foreach (var line in lines)
         {
-            var parts = line.Split(new string[] { " | " }, StringSplitOptions.None);
+            var parts = line.Split(new string[] { " | " }, 3, StringSplitOptions.None);
             if (parts.Length >= 3)
             {
                 _entries.Add(new Entry(parts[0], parts[1], parts[2]));
