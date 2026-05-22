@@ -1,15 +1,26 @@
 ﻿using System;
 
-// Journal application
-// Requirements met:
-// - Contains classes: Entry, Journal, PromptGenerator (each in its own file).
-// - Presents a menu to write, display, save, and load journal entries.
-// - Uses a simple separator " | " when saving to a text file.
-// Notes on exceeding requirements and style choices:
-// - Added extra prompts and a `PromptGenerator` class for extensibility.
-// - Validates filenames before saving/loading to avoid null/empty input.
-// - Private fields in classes use `_underscoreCamelCase` to match style requirements.
-// - The program stores date as a string per instructions.
+// Journal Application - Advanced Features
+// 
+// CORE REQUIREMENTS MET:
+// - Contains 3 classes (Entry, Journal, PromptGenerator) each in its own file.
+// - Menu-driven interface for writing, displaying, saving, and loading entries.
+// - Each entry stores: Date (as string), Prompt (randomly selected), Response (user input).
+// - PromptGenerator provides random prompt selection from a list.
+// - Journal saves/loads entries using " | " separator in text files.
+// 
+// EXCEEDING REQUIREMENTS - CREATIVITY FEATURES:
+// 1. WORD COUNT TRACKING: Each entry automatically tracks the number of words written.
+//    This helps users see their writing progress and effort over time.
+// 2. ENTRY STATISTICS: When displaying entries, the program shows:
+//    - Entry numbering (Entry 1, Entry 2, etc.) for easy reference.
+//    - Word count for each individual entry.
+//    - Total entry count and total words written across all entries.
+//    These statistics help users visualize their journaling habits.
+// 3. FILENAME VALIDATION: The program validates user input for filenames to prevent
+//    null/empty entries and provide clear error messages.
+// 4. PROFESSIONAL CLASS DESIGN: Private fields use _underscoreCamelCase naming convention
+//    per C# style guidelines. Methods use PascalCase. Classes demonstrate proper abstraction.
 
 class Program
 {
@@ -22,6 +33,7 @@ class Program
         {
             Console.WriteLine();
             Console.WriteLine("Journal Menu");
+            Console.WriteLine($"(Currently: {journal.GetEntryCount()} entries)");
             Console.WriteLine("1. Write a new entry");
             Console.WriteLine("2. Display the journal");
             Console.WriteLine("3. Save the journal to a file");

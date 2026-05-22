@@ -20,10 +20,20 @@ public class Journal
             return;
         }
 
-        foreach (var e in _entries)
+        int totalWords = 0;
+        for (int i = 0; i < _entries.Count; i++)
         {
-            Console.WriteLine(e.ToString());
+            Console.WriteLine($"\nEntry {i + 1}:");
+            Console.WriteLine(_entries[i].GetDisplayFormat());
+            totalWords += _entries[i].GetWordCount();
         }
+        Console.WriteLine($"\n--- Summary ---");
+        Console.WriteLine($"Total Entries: {_entries.Count} | Total Words Written: {totalWords}");
+    }
+
+    public int GetEntryCount()
+    {
+        return _entries.Count;
     }
 
     public void Save(string filename)

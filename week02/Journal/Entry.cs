@@ -15,6 +15,19 @@ public class Entry
         Response = response;
     }
 
+    public int GetWordCount()
+    {
+        if (string.IsNullOrWhiteSpace(Response))
+            return 0;
+        return Response.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
+    }
+
+    public string GetDisplayFormat()
+    {
+        int wordCount = GetWordCount();
+        return $"[Date: {Date}]\n  [Prompt: {Prompt}]\n  [Response: {Response}]\n  [Word Count: {wordCount}]";
+    }
+
     public override string ToString()
     {
         return $"{Date} | {Prompt} | {Response}";
